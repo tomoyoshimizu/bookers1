@@ -1,0 +1,19 @@
+<% if value.errors.any? %>
+  <aside class="error-message">
+    <h3 class="error-message__title">
+      <%= value.errors.count %> error prohibited this book from being saved:
+    </h3>
+    <ul class="error-message__list">
+      <% value.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </aside>
+<% end %>
+<%= form_with model: value do |f| %>
+  <%= f.label :title, 'Title' %>
+  <%= f.text_field :title %>
+  <%= f.label :body, 'Body' %>
+  <%= f.text_area :body %>
+  <%= f.submit submit_text %>
+<% end %>
